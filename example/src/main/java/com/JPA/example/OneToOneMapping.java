@@ -13,9 +13,6 @@ import jakarta.annotation.PostConstruct;
 
 @SpringBootApplication
 public class OneToOneMapping {
-	
-	@Autowired
-	private JPARepository jpaRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(OneToOneMapping.class, args);
@@ -23,21 +20,21 @@ public class OneToOneMapping {
 			
 	}
 	
-	@PostConstruct
-	public void Save() {
+	//@PostConstruct
+	/*public void Save() {
 		StudentEntity s1=new StudentEntity();
 		//s1.setS_id(2);
 		s1.setS_name("Anshika");
 		s1.setS_age(24);
-		
+
 		Laptop l1= new Laptop();
 		l1.setLaptopId(100);
 		l1.setBrandName("HP");
 		l1.setModelNumber("210");
 		l1.setStudent(s1);
-		
+
 		jpaRepository.save(l1);
-	}
+	}*/
 	
 	
 

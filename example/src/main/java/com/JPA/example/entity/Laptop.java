@@ -1,11 +1,7 @@
 package com.JPA.example.entity;
 
-import org.hibernate.bytecode.internal.bytebuddy.PrivateAccessorException;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
@@ -15,13 +11,16 @@ public class Laptop {
 	@Id
 	//@GeneratedValue(strategy = GenerationType.AUTO)
 	private int laptopId;
-	private String ModelNumber;
+	private String modelNumber;
 	private String brandName;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "s_id")
+	private  StudentEntity student;
 
 	public Laptop(int laptopId, String modelNumber, String brandName, StudentEntity student) {
 		super();
 		this.laptopId = laptopId;
-		ModelNumber = modelNumber;
+		this.modelNumber = modelNumber;
 		this.brandName = brandName;
 		this.student = student;
 	}
@@ -40,11 +39,11 @@ public class Laptop {
 	}
 
 	public String getModelNumber() {
-		return ModelNumber;
+		return modelNumber;
 	}
 
 	public void setModelNumber(String modelNumber) {
-		ModelNumber = modelNumber;
+		this.modelNumber = modelNumber;
 	}
 
 	public String getBrandName() {
@@ -63,7 +62,5 @@ public class Laptop {
 		this.student = student;
 	}
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "s_id")
-	private  StudentEntity student;
+
 }
